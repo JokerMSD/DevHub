@@ -1,4 +1,4 @@
-import { Login } from "./pages/login"
+import { Router } from "./routes"
 
 
 
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-    <Login/>
+      <Router/>
     </>
   )
 }
