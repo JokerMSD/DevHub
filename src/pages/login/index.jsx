@@ -58,7 +58,7 @@ export function Login() {
 
                    <button 
                    className={Style.registerBtn}
-                   onClick={() => window.location.replace("../register")}  
+                   onClick={() => window.location.replace("/register")}  
                    >Cadastre-se</button>
                
                 </div>
