@@ -1,0 +1,112 @@
+@import "./GlobalStyles.scss";
+
+.button {
+  display: flex;
+  height: 3rem;
+  padding: 0rem 1.39588rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6345rem;
+  flex-shrink: 0;
+  border-radius: 0.25rem;
+  border: 1.218px solid var(--brand-1);
+  background: var(--brand-1);
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--brand-1-50);
+  }
+}
+
+.buttonSmall {
+  display: flex;
+  height: 2.5rem;
+  padding: 0rem 1.39588rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6345rem;
+  flex-shrink: 0;
+  border-radius: 0.25rem;
+  border: 1.218px solid var(--brand-1);
+  background: var(--brand-1);
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background: var(---brand-1-focus);
+    border: 1.218px solid var(--brand-1-focus);
+  }
+}
+
+.buttonNegative {
+  display: inline-flex;
+  height: 3rem;
+  padding: 0rem 1.39588rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6345rem;
+  flex-shrink: 0;
+  border-radius: 0.25rem;
+  border: 1.218px solid var(--brand-1-negative);
+  background: var(--brand-1-negative);
+  color: white;
+  cursor: pointer;
+}
+
+.buttonNegativeSmall {
+  display: inline-flex;
+  height: 2.5rem;
+  padding: 0rem 1.39588rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6345rem;
+  flex-shrink: 0;
+  border-radius: 0.25rem;
+  border: 1.218px solid var(--brand-1-negative);
+  background: var(--brand-1-negative);
+  color: white;
+  cursor: pointer;
+}
+
+.buttonDisabled {
+  display: inline-flex;
+  height: 3rem;
+  padding: 0rem 1.39588rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6345rem;
+  flex-shrink: 0;
+  border-radius: 0.25rem;
+  border: 1.218px solid var(--grey-1);
+  background: var(--grey-1);
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    border-radius: 0.25rem;
+    border: 1.218px solid var(--grey-2);
+    background: var(--grey-2);
+  }
+}
+
+.buttonDisabledSmall {
+  display: inline-flex;
+  height: 2.5rem;
+  padding: 0rem 1.39588rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6345rem;
+  flex-shrink: 0;
+  border-radius: 0.25rem;
+  border: 1.218px solid var(--grey-1);
+  background: var(--grey-1);
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    border-radius: 0.25rem;
+    border: 1.218px solid var(--grey-2);
+    background: var(--grey-2);
+  }
+}
