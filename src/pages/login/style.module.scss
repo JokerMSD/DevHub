@@ -7,7 +7,7 @@
 }
 .loginTitle {
   @extend .title1;
-  color: white;
+  color: var(--grey-0);
 }
 .loginSection {
   display: flex;
@@ -24,27 +24,14 @@
   gap: 1.4rem;
   background-color: var(--grey-3);
 }
-.loginFormContainer {
-  display: flex;
-  flex-direction: column;
-}
 .resgisterContainer {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
-.loginBtn {
-  @extend .button;
-  @extend .paragraph;
-  margin-top: 1.4rem;
-  margin-bottom: 1.4rem;
-}
 .registerBtn {
   @extend .buttonDisabled;
   @extend .paragraph;
-}
-.inputLogin {
-  @extend .input;
 }
 .small {
   @extend .headlineBold;
@@ -52,11 +39,4 @@
   text-align: center;
   margin-bottom: 1.37rem;
   margin-top: 0.75rem;
-}
-.label {
-  @extend .headline;
-  color: var(--grey-0, #f8f9fa);
-  margin: 1.4rem;
-  margin-left: 0;
-  margin-right: 0;
 }
