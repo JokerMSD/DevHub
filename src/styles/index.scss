@@ -25,5 +25,12 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: auto;
     height: 100%;
+}
+
+@media (min-width: 320px) and (max-width: 430px) {
+    main{
+        overflow: scroll;
+    }
 }
