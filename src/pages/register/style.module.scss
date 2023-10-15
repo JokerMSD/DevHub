@@ -1,0 +1,59 @@
+@import "../../styles/index.scss";
+
+.registerSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.375rem;
+  max-height: 100vh;
+}
+.registerBackHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 2.23rem;
+}
+.backButton {
+  @extend .buttonSmall;
+  background-color: var(--grey-3);
+  border-color: var(--grey-3);
+}
+.registerLogo {
+  width: 9.00394rem;
+  height: 1.24838rem;
+}
+.registerTitle {
+  @extend .title1;
+  color: var(--grey-0);
+}
+.registerSubtitle {
+  @extend .headline;
+  color: var(--grey-1);
+}
+.registerContainer {
+  border-radius: 0.3rem;
+  display: flex;
+  padding: 2.625rem 1.375rem;
+  padding-bottom: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+  background-color: var(--grey-3);
+  width: 100%;
+}
+.registerBtn {
+  @extend .buttonDisabled;
+  @extend .paragraph;
+}
+
+@media (min-width: 320px) and (max-width: 430px) {
+  .registerSection {
+    margin-top: 2.5rem;
+    max-width: 100vw;
+  }
+  .registerContainer {
+    max-width: 100vw;
+    width: 80%;
+  }
+}
