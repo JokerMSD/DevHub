@@ -1,11 +1,12 @@
+import { LoginForm } from "../../components/forms/LoginForm";
 import Style from "./style.module.scss";
 
-export function Login() {
+export const Login = () => {
     
   return (
     <>
       <main>
-
+        
         <section className={Style.loginSection}>
 
           <img 
@@ -19,39 +20,8 @@ export function Login() {
 
              <h1 className={Style.loginTitle}>Login</h1>
 
-              <form className={Style.loginFormContainer} action="submit">
+                <LoginForm/>
 
-                <label 
-                  className={Style.label}
-                  htmlFor="email" 
-                >Email</label>
-
-                <input
-                className={Style.inputLogin}
-                  name="email"
-                  id="email"
-                  type="text" 
-                  placeholder="Email" 
-                />
-
-                <h2 
-                  className={Style.label}
-                  htmlFor="password" 
-                >Senha</h2>
-
-                <input 
-                  className={Style.inputLogin}
-                  name="password"
-                  id="password"
-                  type="password" 
-                  placeholder="Senha" 
-                />
-
-                <button 
-                className={Style.loginBtn} 
-                type="submit">Entrar</button>
-
-               </form>
                 <div className={Style.resgisterContainer}>
                
                    <small className={Style.small}>Ainda não possui uma conta?</small>
