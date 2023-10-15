@@ -1,0 +1,23 @@
+@import "../../../styles/index.scss";
+
+.loginFormContainer {
+    display: flex;
+    flex-direction: column;
+}
+.loginBtn {
+    @extend .button;
+    @extend .paragraph;
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
+}
+.inputLogin {
+    @extend .input;
+}
+.label {
+    @extend .headline;
+    color: var(--grey-0);
+    margin: 1.4rem;
+    margin-left: 0;
+    margin-right: 0;
+}
+  
