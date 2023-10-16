@@ -19,7 +19,7 @@ export const Header = () => {
 
             <button 
             className={Style.logoutButton} 
-            onClick={() => window.location.reload()}
+            onClick={() => window.location.replace("/")}
             type="button"
             title="Sair"
             aria-label="Sair"
