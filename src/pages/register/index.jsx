@@ -2,6 +2,7 @@ import { RegisterForm } from "../../components/forms/RegisterForm";
 import Style from "./style.module.scss";
 
 export function Register() {
+  
   return (
     <>
       <main>
