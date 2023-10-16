@@ -1,0 +1,11 @@
+@import "../../styles/index.scss";
+
+.label {
+    @extend .headline;
+    display: flex;
+    width: 100%;
+    color: var(--grey-0);
+    margin: 1.4rem;
+    margin-left: 0;
+    margin-right: 0;
+}
