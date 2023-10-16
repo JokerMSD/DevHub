@@ -1,11 +1,12 @@
+import { Input } from "../../Input";
 import Style from "./style.module.scss";
 import { useForm } from "react-hook-form";
 
 export const RegisterForm = () => {
   const { register, handleSubmit } = useForm();
 
-  const submit = (e) => {
-    console.log(e);
+  const submit = (payload) => {
+    console.log(payload);
   };
 
   return (
@@ -13,95 +14,75 @@ export const RegisterForm = () => {
     onSubmit={handleSubmit(submit)}
     className={Style.registerFormContainer}
     >
-
-      <label
-      className={Style.label} 
-      htmlFor="name"
-      >Nome</label>
-
-      <input
-      className={Style.inputRegister} 
-      {...register("name", { required: true })} 
-      type="text" 
-      placeholder="Digite aqui seu nome" 
+      <Input 
+       className={Style.inputRegister}
+       label="Nome"
+       type="text"
+       id="name"
+       required
+       placeholder="Digite aqui seu nome" 
+      {...register("name")} 
       />
-
-      <label
-      className={Style.label} 
-      htmlFor="email"
-      >Email</label>
-
-      <input
-      className={Style.inputRegister} 
-      autoComplete="username"
-      {...register(
-        "email", 
-        { required: true },
-        { pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i },
+      
+      <Input 
+       className={Style.inputRegister}
+       autoComplete="username"
+       label="Email"
+       type="email"
+       id="email"
+       required
+       placeholder="Digite aqui seu email" 
+       {...register( "email",
         { title: "Email inválido" }
         )} 
-      type="email" 
-      placeholder="Digite aqui seu email" 
       />
 
-      <label
-      className={Style.label} 
-      htmlFor="password"
-      >Senha</label>
-
-      <input
-      className={Style.inputRegister} 
-      autoComplete="password"
-      {...register(
-        "password", 
-        { required: true },
+      <Input 
+       className={Style.inputRegister}
+       autoComplete="password"
+       label="Senha"
+       type="password"
+       id="password"
+       required
+       placeholder="Digite aqui sua senha"
+       {...register("password",
         { minLength: 8 },
-        { pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/i }
+        
         )} 
-      type="password" 
-      placeholder="Digite aqui sua senha"
-       />
+      />
 
-      <label
-      className={Style.label} 
-      htmlFor="confirmPassword"
-      >Confirmar Senha</label>
-
-      <input
-      className={Style.inputRegister} 
-      autoComplete="new-password"
-      {...register(
-        "confirmPassword", 
-        { required: true },
+      <Input 
+       className={Style.inputRegister}
+       autoComplete="password"
+       label="Confirmar Senha"
+       type="password"
+       id="confirmPassword"
+       required
+       placeholder="Digite novamente sua senha" 
+       {...register("confirmPassword",
         { minLength: 8 },
-        { pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/i }
-      )}  
-      type="password" 
-      placeholder="Digite novamente sua senha" 
+        
+      )} 
       />
 
-      <label
-      className={Style.label} 
-      htmlFor="bio"
-      >Bio</label>
-
-      <input
-      className={Style.inputRegister} 
-      {...register("bio", { required: true })} 
-      type="text" 
-      placeholder="Fale sobre você" 
+      <Input 
+       className={Style.inputRegister}
+       label="Bio"
+       type="text"
+       id="bio"
+       required
+       placeholder="Fale sobre você" 
+      {...register("bio")} 
       />
 
-      <label
-      className={Style.label} 
-      htmlFor="contact"
-      >Contato</label>
-
-      <input
-      className={Style.inputRegister} 
-      {...register("contact", { required: true })} 
-      type="text" 
-      placeholder="opção de contato" 
+      <Input 
+       className={Style.inputRegister}
+       required
+       label="Contato"
+       type="text"
+       id="contact"
+       placeholder="opção de contato" 
+      {...register("contact")} 
       />
 
       <label
@@ -111,7 +92,7 @@ export const RegisterForm = () => {
 
       <select 
       className={Style.selectRegister}
-      {...register("module", { required: true })} 
+      {...register("module")} 
       >
         <option selected disabled hidden>Selecione seu módulo</option>
         <option value="M1">Primeiro Módulo</option>
