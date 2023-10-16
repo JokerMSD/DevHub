@@ -1,44 +1,57 @@
-import Style from "./style.module.scss"
-
-
+import { Input } from "../../Input";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginFormSchema } from "./loginForm.schema";
+import Style from "./style.module.scss";
 
 export const LoginForm = () => {
-    
-    return (
-        <form className={Style.loginFormContainer} action="submit">
 
-        <label 
-          className={Style.label}
-          htmlFor="email" 
-        >Email</label>
+  const { 
+    register, 
+    handleSubmit,
+    formState: { errors },
+   } = useForm({
+    resolver : zodResolver(loginFormSchema)
+   });
 
-        <input
-        className={Style.inputLogin}
-          name="email"
-          id="email"
-          type="email" 
-          autoComplete="username"
-          placeholder="Email" 
-        />
+   const submit = (payload) => {
+    console.log(payload)
+   };
 
-        <h2 
-          className={Style.label}
-          htmlFor="password" 
-        >Senha</h2>
 
-        <input 
-          className={Style.inputLogin}
-          name="password"
-          id="password"
-          type="password" 
-          autoComplete="current-password"
-          placeholder="Senha" 
-        />
+  return (
+    <form 
+    onSubmit={handleSubmit(submit)}
+    className={Style.loginFormContainer} 
+    action="submit">
 
-        <button 
-        className={Style.loginBtn} 
-        type="submit">Entrar</button>
+      <Input 
+      className={Style.inputLogin}
+      type="email"
+      id="email"
+      label="Email"
+      autoComplete="username"
+      placeholder="Digite seu email"
+      error={errors.email}
+      {...register("email")}
+      />
 
-       </form>
-    );
+     <Input 
+      className={Style.inputLogin}
+      id="password"
+      type="password"
+      label="Senha"
+      autoComplete="current-password"
+      placeholder="Digite sua senha"
+      error={errors.password}
+      {...register("password")}
+      />
+
+      <button 
+      className={Style.loginBtn} 
+      type="submit"
+      >Entrar</button>
+
+    </form>
+  );
 };
