@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import { Login } from "../pages/login";
-import { Register } from "../pages/register";
-import { Dashboard } from "../pages/dashboard";
+import { Login } from "../pages/HomePage";
+import { Register } from "../pages/RegisterPage";
+import { Dashboard } from "../pages/DashboardPage";
 import { ErrorPage } from "../pages/ErrorPage";
 
 export const Router = () => {
