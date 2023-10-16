@@ -3,6 +3,7 @@
 .registerFormContainer {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 .registerBtn {
     @extend .button;
@@ -29,6 +30,12 @@
     margin: 1.4rem;
     margin-left: 0;
     margin-right: 0;
+}
+.error{
+    @extend .headline;
+    color: var(--wrong-cred);
+    margin-top: 0.5rem;
+    margin-left: 0.2rem;
 }
 
 @media (min-width:2540px) {
