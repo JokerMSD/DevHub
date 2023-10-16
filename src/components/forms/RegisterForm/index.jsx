@@ -1,9 +1,19 @@
 import { Input } from "../../Input";
-import Style from "./style.module.scss";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { registerFormSchema } from "./registerForm.schema";
+import Style from "./style.module.scss";
 
 export const RegisterForm = () => {
-  const { register, handleSubmit } = useForm();
+  const { 
+    register, 
+    handleSubmit, 
+    formState:{ errors },
+  } = useForm({
+    resolver: zodResolver(registerFormSchema)
+  });
+
+
 
   const submit = (payload) => {
     console.log(payload);
@@ -19,71 +29,70 @@ export const RegisterForm = () => {
        label="Nome"
        type="text"
        id="name"
-       required
+       error={errors.name}
        placeholder="Digite aqui seu nome" 
-      {...register("name")} 
+       {...register("name")} 
       />
       
-      <Input 
+       <Input 
        className={Style.inputRegister}
        autoComplete="username"
        label="Email"
-       type="email"
+       type="text"
        id="email"
-       required
+       error={errors.email}
        placeholder="Digite aqui seu email" 
        {...register( "email",
         { title: "Email inválido" }
         )} 
       />
 
-      <Input 
+       <Input 
        className={Style.inputRegister}
        autoComplete="password"
        label="Senha"
        type="password"
        id="password"
-       required
+       error={errors.password}
        placeholder="Digite aqui sua senha"
        {...register("password",
-        { minLength: 8 },
-        
         )} 
       />
 
-      <Input 
+  
+
+       <Input 
        className={Style.inputRegister}
        autoComplete="password"
        label="Confirmar Senha"
        type="password"
        id="confirmPassword"
-       required
+       error={errors.confirmPassword}
        placeholder="Digite novamente sua senha" 
-       {...register("confirmPassword",
-        { minLength: 8 },
-        
+       {...register("confirmPassword",  
       )} 
       />
 
-      <Input 
+       <Input 
        className={Style.inputRegister}
        label="Bio"
        type="text"
        id="bio"
-       required
+       error={errors.bio}
        placeholder="Fale sobre você" 
       {...register("bio")} 
       />
 
-      <Input 
+       <Input 
        className={Style.inputRegister}
-       required
        label="Contato"
        type="text"
        id="contact"
+       error={errors.contact}
        placeholder="opção de contato" 
       {...register("contact")} 
       />
+
 
       <label
       className={Style.label} 
@@ -101,6 +110,8 @@ export const RegisterForm = () => {
         <option value="M4">Quarto Módulo</option>
         <option value="M5">Quinto Módulo</option>
       </select>
+
+      {errors ? <p className={Style.error}>{errors.module?.message}</p> : null}
 
       <button 
       type="submit"
