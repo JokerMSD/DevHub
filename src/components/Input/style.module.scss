@@ -9,3 +9,15 @@
     margin-left: 0;
     margin-right: 0;
 }
+
+.error{
+    @extend .headline;
+    color: var(--wrong-cred);
+    margin-top: 0.5rem;
+    margin-left: 0.2rem;
+}
+
+.inputContainer{
+    width: 100%;
+    max-width: 100%;
+}
