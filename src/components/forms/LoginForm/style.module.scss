@@ -20,4 +20,26 @@
     margin-left: 0;
     margin-right: 0;
 }
+
+@media (max-width:320px){
+    .loginFormContainer{
+        max-width: 100%;
+        width: 100%;
+    }
+    .inputLogin{
+        max-width: 100%;
+        width: 88%;
+    }
+  }
+  
+  @media (min-width:321px) and (max-width:430px) {
+    .loginFormContainer{
+        max-width: 100%;
+        width: 100%;
+    }
+    .inputLogin{
+        max-width: 100%;
+        width: 88%;
+    }
+  }
   
