@@ -19,20 +19,21 @@ const registerFormSchema = z.object({
         /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]+/,
         "É necessario conter ao menos um caracter especial"
     ),
-    confirmPassword: z.string().min(1, "Confirmar a senha é obrigatorio"),
+    password2: z.string().min(1, "Confirmar a senha é obrigatorio"),
     bio: z
     .string()
     .min(1, "Campo obrigatório"),
     contact: z
     .string()
     .min(1, "Campo obrigatório"),
-    module: z
+    course_module: z
     .string()
     .min(2, "Campo obrigatório")
     .regex(/[mM]+[1-5]/, "Selecione um Módulo"),
-}).refine((password, confirmPassword) => password === confirmPassword, {
+}).refine((data) => data.password === data.password2, {
     message: "As senhas devem ser iguais",
-    path: ["confirmPassword"],
+    path: ["password2"],
 });
+
 
 export { registerFormSchema };
