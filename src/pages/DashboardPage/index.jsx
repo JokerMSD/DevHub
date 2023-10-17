@@ -3,9 +3,6 @@ import { Header } from "../../components/Header";
 import Style from './style.module.scss'
 
 export function Dashboard ({user, setUser}) {
-  useEffect(() => {
-    console.log(user)
-  })
 
     return (
       <>
