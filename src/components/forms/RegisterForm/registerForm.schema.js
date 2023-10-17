@@ -28,8 +28,7 @@ const registerFormSchema = z.object({
     .min(1, "Campo obrigatório"),
     course_module: z
     .string()
-    .min(2, "Campo obrigatório")
-    .regex(/[mM]+[1-5]/, "Selecione um Módulo"),
+    .min(2, "Campo obrigatório"),
 }).refine((data) => data.password === data.password2, {
     message: "As senhas devem ser iguais",
     path: ["password2"],
