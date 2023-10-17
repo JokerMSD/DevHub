@@ -1,9 +1,13 @@
-import { Input } from "../../Input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Input } from "../../Input";
 import { registerFormSchema } from "./registerForm.schema";
-import Style from "./style.module.scss";
 import { Api } from "../../../services/Api";
+import Style from "./style.module.scss";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const RegisterForm = () => {
   const {
@@ -14,19 +18,58 @@ export const RegisterForm = () => {
     resolver: zodResolver(registerFormSchema),
   });
 
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false)
+
   const userRegister = async (payload) => {
     try {
-      const data = JSON.stringify(payload);
-      await Api.post("/users", data);
-      console.log("Cadastro realizado com sucesso!");
-    } catch (error) {
-      console.log(error);
+      setLoading(true)
+      await Api.post("/users", payload);
+      toast.success("Conta criada com sucesso!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      navigate("/");
+    }catch (error) {
+      if(error.response?.data.message === "Email already exists"){
+        toast.error("Email já cadastrado", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      }else {
+        toast.error("Ops! Algo deu errado", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      }
+    } finally {
+      setTimeout(() => {
+        setLoading(false)
+      },5*1000)
     }
   };
-  userRegister();
 
   const submit = (payload) => {
-    console.log(payload);
+    userRegister(payload);
   };
 
   return (
@@ -105,20 +148,26 @@ export const RegisterForm = () => {
         <option selected disabled hidden>
           Selecione seu módulo
         </option>
-        <option value="M1">Primeiro Módulo</option>
-        <option value="M2">Segundo Módulo</option>
-        <option value="M3">Terceiro Módulo</option>
-        <option value="M4">Quarto Módulo</option>
-        <option value="M5">Quinto Módulo</option>
+        <option value="Primeiro módulo (Introdução ao Frontend)">
+          Primeiro Módulo
+        </option>
+        <option value="Segundo módulo (Frontend Avançado">
+          Segundo Módulo
+        </option>
+        <option value="Terceiro módulo (Introdução ao Backend)">
+          Terceiro Módulo
+        </option>
+        <option value="Quarto módulo (Backend Avançado)">Quarto Módulo</option>
       </select>
 
       {errors.course_module ? (
         <p className={Style.error}>{errors.course_module.message}</p>
       ) : null}
 
-      <button type="submit" className={Style.registerBtn}>
-        Cadastrar
-      </button>
+      <button type="submit" 
+      disabled={loading}
+      className={Style.registerBtn}
+      >Cadastrar</button>
     </form>
   );
 };
