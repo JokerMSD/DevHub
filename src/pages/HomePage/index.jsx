@@ -4,7 +4,7 @@ import Style from "./style.module.scss";
 import { ToastContainer } from "react-toastify";
 
 export const Login = ({user, setUser}) => {
-  console.log(user)
+
   return (
     <>
       <main>
