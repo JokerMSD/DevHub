@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { LoginForm } from "../../components/forms/LoginForm";
+import Logo from "../../assets/logo.svg";
 import Style from "./style.module.scss";
 import { ToastContainer } from "react-toastify";
 
@@ -25,7 +26,7 @@ export const Login = ({user, setUser}) => {
             className={Style.loginLogo}
             width={200}
             height={200}
-            src="../src/assets/logo.svg"
+            src={Logo}
             alt="Site Logo"
           />
 
