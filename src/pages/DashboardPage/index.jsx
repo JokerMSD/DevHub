@@ -1,16 +1,18 @@
+import { useEffect } from "react";
 import { Header } from "../../components/Header";
 import Style from './style.module.scss'
 
-export function Dashboard () {
-
-  const username = 'Samuel Leão'
+export function Dashboard ({user, setUser}) {
+  useEffect(() => {
+    console.log(user)
+  })
 
     return (
       <>
-      <Header/>
+      <Header setUser={setUser} user={user} />
       <div className={Style.welcomeContainer}>
-        <h1 className={Style.welcomeTitle}>Olá, {username}</h1>
-        <p className={Style.welcomeText}>Primeiro módulo (introdução ao Frontend)</p>
+        <h1 className={Style.welcomeTitle}>Olá, {user.name}</h1>
+        <p className={Style.welcomeText}>{user.course_module}</p>
       </div>
       <div className={Style.dashboardContainer}>
         <h2 className={Style.dashboardTitle}>Que pena! Estamos em desenvolvimento :(</h2>
