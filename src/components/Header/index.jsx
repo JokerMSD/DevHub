@@ -1,7 +1,16 @@
+import { useNavigate } from 'react-router-dom';
 import logo from "../../assets/logo.svg";
 import Style from "./style.module.scss"
 
-export const Header = () => {
+export const Header = ({user, setUser}) => {
+    
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        setUser([])
+        localStorage.removeItem("@KenzieHub:token");
+        navigate("/")
+    }
 
     return (
 
@@ -19,7 +28,7 @@ export const Header = () => {
 
             <button 
             className={Style.logoutButton} 
-            onClick={() => window.location.replace("/")}
+            onClick={handleLogout}
             type="button"
             title="Sair"
             aria-label="Sair"
