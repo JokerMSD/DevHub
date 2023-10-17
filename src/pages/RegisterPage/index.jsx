@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { RegisterForm } from "../../components/forms/RegisterForm";
 import Style from "./style.module.scss";
 
@@ -6,6 +8,18 @@ export function Register() {
   return (
     <>
       <main>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
         <section className={Style.registerSection}>
           <div className={Style.registerBackHeader}>
             <img
