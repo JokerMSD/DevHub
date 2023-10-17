@@ -1,46 +1,49 @@
 import { Link } from "react-router-dom";
 import { LoginForm } from "../../components/forms/LoginForm";
 import Style from "./style.module.scss";
+import { ToastContainer } from "react-toastify";
 
-export const Login = () => {
-    
+export const Login = ({user, setUser}) => {
+  console.log(user)
   return (
     <>
       <main>
-        
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
         <section className={Style.loginSection}>
-
-          <img 
+          <img
             className={Style.loginLogo}
-            width={200} 
-            height={200} 
-            src="../src/assets/logo.svg" 
-            alt="Site Logo"/>
+            width={200}
+            height={200}
+            src="../src/assets/logo.svg"
+            alt="Site Logo"
+          />
 
-            <div className={Style.loginContainer}>
+          <div className={Style.loginContainer}>
+            <h1 className={Style.loginTitle}>Login</h1>
 
-             <h1 className={Style.loginTitle}>Login</h1>
+            <LoginForm setUser={setUser}/>
 
-                <LoginForm/>
+            <div className={Style.resgisterContainer}>
+              <small className={Style.small}>Ainda não possui uma conta?</small>
 
-                <div className={Style.resgisterContainer}>
-               
-                   <small className={Style.small}>Ainda não possui uma conta?</small>
-
-                   <Link 
-                   className={Style.registerBtn}
-                   to="/register"
-                   >Cadastre-se</Link>
-               
-                </div>
-
-
-
+              <Link className={Style.registerBtn} to="/register">
+                Cadastre-se
+              </Link>
             </div>
-
+          </div>
         </section>
-
       </main>
     </>
   );
-}
+};
