@@ -82,6 +82,7 @@ export const LoginForm = ({setUser}) => {
         type="email"
         id="email"
         label="Email"
+        noEye={true}
         autoComplete="username"
         placeholder="Digite seu email"
         error={errors.email}

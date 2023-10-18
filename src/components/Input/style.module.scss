@@ -22,6 +22,38 @@
     max-width: 100%;
 }
 
+.inputDiv{
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.eye{
+    display: flex;
+    position: absolute;
+    right:3%;
+    cursor: pointer;
+    
+    &:hover{
+        color: var(--grey-1);
+    }
+}
+
+.eyeSlashed{
+    display: flex;
+    position: absolute;
+    right: 3%;
+    cursor: pointer;
+    
+    &:hover{
+        color: var(--grey-1);
+    }
+}
+
+.hidden{
+    display: none;
+}
+
 
 @media (max-width:320px){
     .inputContainer{

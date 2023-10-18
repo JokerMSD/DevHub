@@ -1,13 +1,13 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 import { Input } from "../../Input";
 import { registerFormSchema } from "./registerForm.schema";
 import { Api } from "../../../services/Api";
 import Style from "./style.module.scss";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 export const RegisterForm = () => {
   const {
@@ -20,11 +20,11 @@ export const RegisterForm = () => {
 
   const navigate = useNavigate();
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const userRegister = async (payload) => {
     try {
-      setLoading(true)
+      setLoading(true);
       await Api.post("/users", payload);
       toast.success("Conta criada com sucesso!", {
         position: "top-right",
@@ -37,8 +37,8 @@ export const RegisterForm = () => {
         theme: "dark",
       });
       navigate("/");
-    }catch (error) {
-      if(error.response?.data.message === "Email already exists"){
+    } catch (error) {
+      if (error.response?.data.message === "Email already exists") {
         toast.error("Email já cadastrado", {
           position: "top-right",
           autoClose: 5000,
@@ -49,7 +49,7 @@ export const RegisterForm = () => {
           progress: undefined,
           theme: "dark",
         });
-      }else {
+      } else {
         toast.error("Ops! Algo deu errado", {
           position: "top-right",
           autoClose: 5000,
@@ -63,14 +63,15 @@ export const RegisterForm = () => {
       }
     } finally {
       setTimeout(() => {
-        setLoading(false)
-      },5*1000)
+        setLoading(false);
+      }, 5 * 1000);
     }
   };
 
   const submit = (payload) => {
     userRegister(payload);
   };
+
 
   return (
     <form
@@ -82,6 +83,8 @@ export const RegisterForm = () => {
         label="Nome"
         type="text"
         id="name"
+        noHaveSlash={true}
+        noEye={true}
         error={errors.name}
         placeholder="Digite aqui seu nome"
         {...register("name")}
@@ -93,38 +96,47 @@ export const RegisterForm = () => {
         label="Email"
         type="text"
         id="email"
+        noHaveSlash={true}
+        noEye={true}
         error={errors.email}
         placeholder="Digite aqui seu email"
         {...register("email", { title: "Email inválido" })}
       />
 
-      <Input
-        className={Style.inputRegister}
-        autoComplete="password"
-        label="Senha"
-        type="password"
-        id="password"
-        error={errors.password}
-        {...register("password")}
-        placeholder="Digite aqui sua senha"
-      />
+      <div className={Style.inputEyeContainer1}>
+        <Input
+          className={Style.inputRegister}
+          autoComplete="password"
+          label="Senha"
+          type="password"
+          id="password"
+          error={errors.password}
+          {...register("password")}
+          placeholder="Digite aqui sua senha"
+        />
 
-      <Input
-        className={Style.inputRegister}
-        autoComplete="password"
-        label="Confirmar Senha"
-        type="password"
-        id="password2"
-        error={errors.password2}
-        {...register("password2")}
-        placeholder="Digite novamente sua senha"
-      />
+      </div>
+
+      <div className={Style.inputEyeContainer2}>
+        <Input
+          className={Style.inputRegister}
+          autoComplete="password"
+          label="Confirmar Senha"
+          type="password"
+          id="password2"
+          error={errors.password2}
+          {...register("password2")}
+          placeholder="Digite novamente sua senha"
+        />
+      </div>
 
       <Input
         className={Style.inputRegister}
         label="Bio"
         type="text"
         id="bio"
+        noHaveSlash={true}
+        noEye={true}
         error={errors.bio}
         placeholder="Fale sobre você"
         {...register("bio")}
@@ -135,6 +147,8 @@ export const RegisterForm = () => {
         label="Contato"
         type="text"
         id="contact"
+        noHaveSlash={true}
+        noEye={true}
         error={errors.contact}
         placeholder="opção de contato"
         {...register("contact")}
@@ -149,25 +163,26 @@ export const RegisterForm = () => {
           Selecione seu módulo
         </option>
         <option value="Primeiro módulo (Introdução ao Frontend)">
-          Primeiro Módulo
+          Primeiro módulo (Introdução ao Frontend)
         </option>
         <option value="Segundo módulo (Frontend Avançado">
-          Segundo Módulo
+          Segundo módulo (Frontend Avançado)
         </option>
         <option value="Terceiro módulo (Introdução ao Backend)">
-          Terceiro Módulo
+          Terceiro módulo (Introdução ao Backend)
         </option>
-        <option value="Quarto módulo (Backend Avançado)">Quarto Módulo</option>
+        <option value="Quarto módulo (Backend Avançado)">
+          Quarto módulo (Backend Avançado)
+        </option>
       </select>
 
       {errors.course_module ? (
         <p className={Style.error}>{errors.course_module.message}</p>
       ) : null}
 
-      <button type="submit" 
-      disabled={loading}
-      className={Style.registerBtn}
-      >Cadastrar</button>
+      <button type="submit" disabled={loading} className={Style.registerBtn}>
+        Cadastrar
+      </button>
     </form>
   );
 };
