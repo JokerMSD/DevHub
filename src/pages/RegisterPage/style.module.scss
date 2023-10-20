@@ -21,8 +21,8 @@
   text-decoration: none;
   border: none;
 
-  &:hover{
-    background-color: var(--grey-2)
+  &:hover {
+    background-color: var(--grey-2);
   }
 }
 .registerLogo {
@@ -54,7 +54,7 @@
   @extend .paragraph;
 }
 
-@media (min-width:1920px) {
+@media (min-width: 1920px) {
   .registerSection {
     max-width: 100vw;
     width: 22%;
@@ -62,7 +62,7 @@
   .registerContainer {
     max-width: 100vw;
     width: 100%;
-  } 
+  }
 }
 
 @media (max-width: 320px) {
