@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { RegisterForm } from "../../components/forms/RegisterForm";
 import Logo from "../../assets/logo.svg";
 import Style from "./style.module.scss";
