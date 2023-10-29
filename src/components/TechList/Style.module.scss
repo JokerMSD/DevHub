@@ -1,11 +1,11 @@
 @import "../../styles/index.scss";
 
-
-.techSection{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    flex-direction: column;
+.techSection {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  flex-direction: column;
 }
 .techAddContainer {
   display: flex;
@@ -43,31 +43,28 @@
   width: 40px;
   height: 40px;
 }
-.techList{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    margin-top: 1.75rem;
-    margin-bottom: 4rem;
-    width: 51%;
-    padding: 1%;
-    padding-bottom: 1.5rem;
-    height: fit-content;
-    max-height: 70vh;
-    height: fit-content;
-    border-radius: 0.25rem;
-    background: var(--grey-3);
-    gap: 0.63rem;
+.techList {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin-top: 1.75rem;
+  margin-bottom: 4rem;
+  width: 51%;
+  padding: 1%;
+  padding-bottom: 1.5rem;
+  height: fit-content;
+  border-radius: 0.25rem;
+  background: var(--grey-3);
+  gap: 0.63rem;
 }
 
-@media (min-width: 319px) and (max-width:320px) {
+@media (min-width: 319px) and (max-width: 320px) {
   .techList {
     padding-top: 1rem;
     padding-bottom: 2rem;
     padding-right: 0.5rem;
     width: 90%;
     height: max-content;
-
   }
   .techAddContainer {
     justify-content: start;
