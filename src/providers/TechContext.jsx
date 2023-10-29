@@ -76,8 +76,6 @@ const TechProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      console.log(response);
-
       if (response.status === 201) {
         setTechData((prevTechData) =>
           prevTechData.map((tech) =>
@@ -88,8 +86,6 @@ const TechProvider = ({ children }) => {
 
         return;
       }
-
-      console.log(response);
     } catch (error) {
       throw new Error(error);
     }
