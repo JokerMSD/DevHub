@@ -1,0 +1,107 @@
+@import "../../../styles/index.scss";
+
+.techItemContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 96%;
+  padding: 1.2rem;
+  border-radius: 0.25rem;
+  background: var(--grey-4);
+  flex-shrink: 0;
+}
+.techItemTitle {
+  color: var(--grey-0);
+  @extend .title2;
+}
+.techText {
+  color: var(--grey-1);
+  line-height: 1.39588rem;
+  @extend .paragraph;
+}
+.techChange {
+    display: flex;
+    
+}
+.modTech {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  margin-left: 0.59rem;
+}
+.modIcon {
+  width: 25px;
+  height: 25px;
+  color: var(--grey-0);
+
+  &:hover{
+    color: var(--blue);
+  }
+
+  cursor: pointer;
+}
+.removeTech {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  margin-left: 0.59rem;
+
+}
+.delIcon {
+  width: 25px;
+  height: 25px;
+  color: var(--grey-0);
+
+  &:hover{
+    color: var(--red);
+  }
+
+  cursor: pointer;
+}
+
+
+@media (min-width: 319px) and (max-width:320px) {
+  .techItemContainer {
+    position: relative;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: normal;
+    margin-left: 0.3rem;
+    width: 83%;
+    height: 4.76388rem;
+  }
+  .modIcon {
+    position: absolute;
+    right: 17%;
+  }
+  .delIcon {
+    position: absolute;
+    right: 5%;
+  }
+}
+
+@media (min-width: 330px) and (max-width: 430px) {
+  .techItemContainer {
+    position: relative;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: normal;
+    margin-left: 0.3rem;
+    width: 87%;
+    height: 4.76388rem;
+  }
+  .modIcon {
+    position: absolute;
+    right: 17%;
+  }
+  .delIcon {
+    position: absolute;
+    right: 5%;
+  }
+}

@@ -1,40 +1,26 @@
-import { useNavigate } from 'react-router-dom';
 import logo from "./../../assets/logo.svg";
-import Style from "./style.module.scss"
+import Style from "./style.module.scss";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserStateContext";
 
-export const Header = ({user, setUser}) => {
-    
-    const navigate = useNavigate();
+export const Header = () => {
+  const { handleLogout } = useContext(UserContext);
 
-    const handleLogout = () => {
-        setUser([])
-        localStorage.removeItem("@KenzieHub:token");
-        navigate("/")
-    }
+  return (
+    <header className={Style.header}>
+      <div className={Style.logoContainer}>
+        <img className={Style.logoImg} src={logo} alt="logo" />
+      </div>
 
-    return (
-
-        <header className={Style.header}>
-
-            <div className={Style.logoContainer}>
-
-                <img 
-                className={Style.logoImg} 
-                src={logo} 
-                alt="logo" 
-                />
-
-            </div>
-
-            <button 
-            className={Style.logoutButton} 
-            onClick={handleLogout}
-            type="button"
-            title="Sair"
-            aria-label="Sair"
-            >Sair</button>
-
-        </header>
-
-    )
-}
+      <button
+        className={Style.logoutButton}
+        onClick={handleLogout}
+        type="button"
+        title="Sair"
+        aria-label="Sair"
+      >
+        Sair
+      </button>
+    </header>
+  );
+};

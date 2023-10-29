@@ -1,45 +1,44 @@
 @import "../../../styles/index.scss";
 
 .loginFormContainer {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .loginBtn {
-    @extend .button;
-    @extend .paragraph;
-    margin-top: 1.4rem;
-    margin-bottom: 1.4rem;
+  @extend .button;
+  @extend .paragraph;
+  margin-top: 1.4rem;
+  margin-bottom: 1.4rem;
 }
 .inputLogin {
-    @extend .input;
+  @extend .input;
 }
 .label {
-    @extend .headline;
-    color: var(--grey-0);
-    margin: 1.4rem;
-    margin-left: 0;
-    margin-right: 0;
+  @extend .headline;
+  color: var(--grey-0);
+  margin: 1.4rem;
+  margin-left: 0;
+  margin-right: 0;
 }
 
-@media (max-width:320px){
-    .loginFormContainer{
-        max-width: 100%;
-        width: 100%;
-    }
-    .inputLogin{
-        max-width: 100%;
-        width: 88%;
-    }
+@media (max-width: 320px) {
+  .loginFormContainer {
+    max-width: 100%;
+    width: 100%;
   }
-  
-  @media (min-width:321px) and (max-width:430px) {
-    .loginFormContainer{
-        max-width: 100%;
-        width: 100%;
-    }
-    .inputLogin{
-        max-width: 100%;
-        width: 88%;
-    }
+  .inputLogin {
+    max-width: 100%;
+    width: 88%;
   }
-  
+}
+
+@media (min-width: 321px) and (max-width: 430px) {
+  .loginFormContainer {
+    max-width: 100%;
+    width: 100%;
+  }
+  .inputLogin {
+    max-width: 100%;
+    width: 88%;
+  }
+}

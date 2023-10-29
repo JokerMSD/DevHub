@@ -1,0 +1,100 @@
+@import "../../styles/index.scss";
+
+
+.techSection{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+.techAddContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+.techTitle {
+  color: var(--grey-0);
+  @extend .title2;
+}
+.techText {
+  color: var(--grey-1);
+  @extend .paragraph;
+}
+.addTech {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.03031rem;
+  height: 2rem;
+  flex-shrink: 0;
+  background-color: var(--grey-3);
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--grey-2);
+  }
+}
+.addTechIcon {
+  color: var(--grey-0);
+  width: 40px;
+  height: 40px;
+}
+.techList{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin-top: 1.75rem;
+    margin-bottom: 4rem;
+    width: 51%;
+    padding: 1%;
+    padding-bottom: 1.5rem;
+    height: fit-content;
+    max-height: 70vh;
+    height: fit-content;
+    border-radius: 0.25rem;
+    background: var(--grey-3);
+    gap: 0.63rem;
+}
+
+@media (min-width: 319px) and (max-width:320px) {
+  .techList {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    padding-right: 0.5rem;
+    width: 90%;
+    height: max-content;
+
+  }
+  .techAddContainer {
+    justify-content: start;
+  }
+  .techTitle {
+    margin-left: 0.5rem;
+  }
+  .addTech {
+    margin-left: 52%;
+  }
+}
+
+@media (min-width: 330px) and (max-width: 430px) {
+  .techList {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    padding-right: 0.5rem;
+    width: 90%;
+    height: fit-content;
+  }
+  .techAddContainer {
+    justify-content: start;
+  }
+  .techTitle {
+    margin-left: 0.8rem;
+  }
+  .addTech {
+    margin-left: 59%;
+  }
+}

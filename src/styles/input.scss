@@ -10,11 +10,11 @@
   border: 1.218px solid var(--grey-2);
   background: var(--grey-2);
   color: var(--grey-0);
-  
+
   &:focus {
     border-radius: 0.25rem;
     border: 1.218px solid var(--grey-0);
     background: var(--grey-2);
-    color: var(--grey-0, #F8F9FA);
+    color: var(--grey-0, #f8f9fa);
   }
 }

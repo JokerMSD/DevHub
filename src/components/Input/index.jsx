@@ -1,27 +1,22 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/display-name */
-import { forwardRef, useState } from "react";
+import { forwardRef, useContext, useState } from "react";
 import Style from "./style.module.scss";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
+import { PasswordContext } from "../../providers/PasswordStateContext";
 
 export const Input = forwardRef(
   ({ error, noHaveSlash, noEye, type, label, id, ...rest }, ref) => {
-    const [isPasswordVisible, setPasswordVisible] = useState(false);
+    const { viewPassword, hidePassword } = useContext(PasswordContext);
 
-    const viewPassword = () => {
-      setPasswordVisible(true);
-      const password = document.querySelector(`input[name=${id}]`);
-      if (password.type === "password") {
-        password.type = "text";
-      }
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleViewPassword = () => {
+      viewPassword(id);
+      setShowPassword(true);
     };
 
-    const hidePassword = () => {
-      setPasswordVisible(false);
-      const password = document.querySelector(`input[name=${id}]`);
-      if (password.type === "text") {
-        password.type = "password";
-      }
+    const handleHidePassword = () => {
+      hidePassword(id);
+      setShowPassword(false);
     };
 
     return (
@@ -33,19 +28,19 @@ export const Input = forwardRef(
         <div className={Style.inputDiv}>
           <input type={type} ref={ref} {...rest} />
 
-          <BsEyeFill
-            onClick={viewPassword}
-            className={`${Style.eye} ${
-              noEye || isPasswordVisible ? Style.hidden : ""
-            }`}
-          />
-
-          <BsEyeSlashFill
-            onClick={hidePassword}
-            className={`${Style.eyeSlashed} ${
-              noHaveSlash || !isPasswordVisible ? Style.hidden : ""
-            }`}
-          />
+          {showPassword ? (
+            <BsEyeFill
+              onClick={handleHidePassword}
+              className={`${Style.eye} ${noEye ? Style.hidden : ""}`}
+            />
+          ) : (
+            <BsEyeSlashFill
+              onClick={handleViewPassword}
+              className={`${Style.eyeSlashed} ${
+                noHaveSlash ? Style.hidden : ""
+              }`}
+            />
+          )}
         </div>
         {error ? <p className={Style.error}>{error.message}</p> : null}
       </div>

@@ -4,33 +4,31 @@
 @import "./input.scss";
 @import "./button.scss";
 
-
-*{
-    font-family: 'Inter',sans-serif;
+* {
+  font-family: "Inter", sans-serif;
 }
-HTML{
-
-    overflow: auto;
+HTML {
+  overflow: auto;
 }
-body{
-    background-color: var(--grey-4);
-    width: 100vw;
-    height: 100vh;
-};
-#root{
-    width: 100vw;
-    height: 100vh;
-};
-main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: auto;
-    height: 100%;
+body {
+  background-color: var(--grey-4);
+  width: 100vw;
+  height: 100vh;
+}
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  height: 100%;
 }
 
 @media (min-width: 320px) and (max-width: 430px) {
-    main{
-        overflow: scroll;
-    }
+  main {
+    overflow: scroll;
+  }
 }

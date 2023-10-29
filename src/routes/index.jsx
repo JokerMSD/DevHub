@@ -1,19 +1,22 @@
 import { Route, Routes } from "react-router-dom";
-import { Login } from "../pages/HomePage";
+import { Login } from "../pages/LoginPage";
 import { Register } from "../pages/RegisterPage";
-import { Dashboard } from "../pages/DashboardPage";
+import { Dashboard } from "../pages/HomePage";
 import { ErrorPage } from "../pages/ErrorPage";
-import { useState } from "react";
+import { PrivateRoutesUser } from "./PrivateRoutes/PrivateRoutesUser";
+import { PublicRoutes } from "./PublicRoutes";
 
 export const Router = () => {
-  const [user, setUser] = useState([])
-  return ( 
+  return (
     <Routes>
-        <Route path="/" element={<Login user={user} setUser={setUser}/>}/>
-        <Route path="/register" element={<Register/>}/>
-        <Route path="/dashboard" element={<Dashboard user={user} setUser={setUser}/>}/>
-        <Route path="*" element={<ErrorPage/>}/>
+      <Route element={<PublicRoutes/>}>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Route>
+      <Route element={<PrivateRoutesUser />}>
+        <Route path="/user" element={<Dashboard />} />
+      </Route>
+      <Route path="*" element={<ErrorPage />} />
     </Routes>
-
- );
+  );
 };

@@ -1,81 +1,21 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { Input } from "../../Input";
-import { registerFormSchema } from "./registerForm.schema";
-import { Api } from "../../../services/Api";
 import Style from "./style.module.scss";
+import { UserContext } from "../../../providers/UserStateContext";
 
 export const RegisterForm = () => {
   const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: zodResolver(registerFormSchema),
-  });
-
-  const navigate = useNavigate();
-
-  const [loading, setLoading] = useState(false);
-
-  const userRegister = async (payload) => {
-    try {
-      setLoading(true);
-      await Api.post("/users", payload);
-      toast.success("Conta criada com sucesso!", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
-      navigate("/");
-    } catch (error) {
-      if (error.response?.data.message === "Email already exists") {
-        toast.error("Email já cadastrado", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-      } else {
-        toast.error("Ops! Algo deu errado", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-      }
-    } finally {
-      setTimeout(() => {
-        setLoading(false);
-      }, 5 * 1000);
-    }
-  };
-
-  const submit = (payload) => {
-    userRegister(payload);
-  };
-
+    submitRegister,
+    registerHandleSubmit,
+    registerRegister,
+    registerErrors,
+    loading,
+  } = useContext(UserContext);
 
   return (
     <form
-      onSubmit={handleSubmit(submit)}
+      onSubmit={registerHandleSubmit(submitRegister)}
       className={Style.registerFormContainer}
     >
       <Input
@@ -85,9 +25,9 @@ export const RegisterForm = () => {
         id="name"
         noHaveSlash={true}
         noEye={true}
-        error={errors.name}
+        error={registerErrors.name}
         placeholder="Digite aqui seu nome"
-        {...register("name")}
+        {...registerRegister("name")}
       />
 
       <Input
@@ -98,9 +38,9 @@ export const RegisterForm = () => {
         id="email"
         noHaveSlash={true}
         noEye={true}
-        error={errors.email}
+        error={registerErrors.email}
         placeholder="Digite aqui seu email"
-        {...register("email", { title: "Email inválido" })}
+        {...registerRegister("email", { title: "Email inválido" })}
       />
 
       <div className={Style.inputEyeContainer1}>
@@ -110,11 +50,10 @@ export const RegisterForm = () => {
           label="Senha"
           type="password"
           id="password"
-          error={errors.password}
-          {...register("password")}
+          error={registerErrors.password}
+          {...registerRegister("password")}
           placeholder="Digite aqui sua senha"
         />
-
       </div>
 
       <div className={Style.inputEyeContainer2}>
@@ -124,8 +63,8 @@ export const RegisterForm = () => {
           label="Confirmar Senha"
           type="password"
           id="password2"
-          error={errors.password2}
-          {...register("password2")}
+          error={registerErrors.password2}
+          {...registerRegister("password2")}
           placeholder="Digite novamente sua senha"
         />
       </div>
@@ -137,9 +76,9 @@ export const RegisterForm = () => {
         id="bio"
         noHaveSlash={true}
         noEye={true}
-        error={errors.bio}
+        error={registerErrors.bio}
         placeholder="Fale sobre você"
-        {...register("bio")}
+        {...registerRegister("bio")}
       />
 
       <Input
@@ -149,16 +88,19 @@ export const RegisterForm = () => {
         id="contact"
         noHaveSlash={true}
         noEye={true}
-        error={errors.contact}
+        error={registerErrors.contact}
         placeholder="opção de contato"
-        {...register("contact")}
+        {...registerRegister("contact")}
       />
 
       <label className={Style.label} htmlFor="course_module">
         Selecionar módulo
       </label>
 
-      <select className={Style.selectRegister} {...register("course_module")}>
+      <select
+        className={Style.selectRegister}
+        {...registerRegister("course_module")}
+      >
         <option selected disabled hidden>
           Selecione seu módulo
         </option>
@@ -176,8 +118,8 @@ export const RegisterForm = () => {
         </option>
       </select>
 
-      {errors.course_module ? (
-        <p className={Style.error}>{errors.course_module.message}</p>
+      {registerErrors.course_module ? (
+        <p className={Style.error}>{registerErrors.course_module.message}</p>
       ) : null}
 
       <button type="submit" disabled={loading} className={Style.registerBtn}>

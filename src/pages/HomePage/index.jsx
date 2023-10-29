@@ -1,50 +1,64 @@
-import { Link } from "react-router-dom";
-import { LoginForm } from "../../components/forms/LoginForm";
-import Logo from "../../assets/logo.svg";
+import { useContext, useState, useEffect } from "react";
+import { Header } from "../../components/Header";
 import Style from "./style.module.scss";
+import { UserContext } from "../../providers/UserStateContext";
+import { TechList } from "../../components/TechList";
+import { CreateTechModal } from "../../components/TechModal";
 import { ToastContainer } from "react-toastify";
+import { EditTechModal } from "../../components/TechModalEdit";
 
-export const Login = ({user, setUser}) => {
+export function Dashboard() {
+  const { user } = useContext(UserContext);
+  const [shouldRender, setShouldRender] = useState(true);
+
+  useEffect(() => {
+    if (user === null || (Array.isArray(user) && user.length === 1)) {
+      const timeout = setTimeout(() => {
+        setShouldRender(true);
+      }, 2000);
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    } else {
+      setShouldRender(true);
+    }
+  }, [user]);
+
+  if (!shouldRender) {
+    return null;
+  }
 
   return (
     <>
-      <main>
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="dark"
-        />
-        <section className={Style.loginSection}>
-          <img
-            className={Style.loginLogo}
-            width={200}
-            height={200}
-            src={Logo}
-            alt="Site Logo"
-          />
-
-          <div className={Style.loginContainer}>
-            <h1 className={Style.loginTitle}>Login</h1>
-
-            <LoginForm setUser={setUser}/>
-
-            <div className={Style.resgisterContainer}>
-              <small className={Style.small}>Ainda não possui uma conta?</small>
-
-              <Link className={Style.registerBtn} to="/register">
-                Cadastre-se
-              </Link>
-            </div>
-          </div>
-        </section>
-      </main>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+      <CreateTechModal
+        headerText={"Cadastrar Tecnologia"}
+        buttonText={"Cadastrar Tecnologia"}
+      />
+      <EditTechModal
+        headerText={"Tecnologia Detalhes"}
+        buttonText={"Salvar alterações"}
+      />
+      <Header />
+      <div className={Style.welcomeContainer}>
+        <h1 className={Style.welcomeTitle}>Olá, {user.name}</h1>
+        <p className={Style.welcomeText}>{user.course_module}</p>
+      </div>
+      <div className={Style.homeContainer}>
+        <TechList />
+      </div>
     </>
   );
-};
+}

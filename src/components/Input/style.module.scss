@@ -1,68 +1,67 @@
 @import "../../styles/index.scss";
 
 .label {
-    @extend .headline;
-    display: flex;
-    width: 100%;
-    color: var(--grey-0);
-    margin: 1.4rem;
-    margin-left: 0;
-    margin-right: 0;
+  @extend .headline;
+  display: flex;
+  width: 100%;
+  color: var(--grey-0);
+  margin: 1.4rem;
+  margin-left: 0;
+  margin-right: 0;
 }
 
-.error{
-    @extend .headline;
-    color: var(--wrong-cred);
-    margin-top: 0.5rem;
-    margin-left: 0.2rem;
+.error {
+  @extend .headline;
+  color: var(--wrong-cred);
+  margin-top: 0.5rem;
+  margin-left: 0.2rem;
 }
 
-.inputContainer{
-    width: 100%;
+.inputContainer {
+  width: 100%;
+  max-width: 100%;
+}
+
+.inputDiv {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.eye {
+  display: flex;
+  position: absolute;
+  right: 5%;
+  color: var(--grey-3);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--grey-1);
+  }
+}
+
+.eyeSlashed {
+  display: flex;
+  position: absolute;
+  right: 5%;
+  color: var(--grey-3);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--grey-1);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 320px) {
+  .inputContainer {
     max-width: 100%;
-}
-
-.inputDiv{
-    display: flex;
-    position: relative;
-    align-items: center;
-}
-
-.eye{
-    display: flex;
-    position: absolute;
-    right:3%;
-    cursor: pointer;
-    
-    &:hover{
-        color: var(--grey-1);
-    }
-}
-
-.eyeSlashed{
-    display: flex;
-    position: absolute;
-    right: 3%;
-    cursor: pointer;
-    
-    &:hover{
-        color: var(--grey-1);
-    }
-}
-
-.hidden{
-    display: none;
-}
-
-
-@media (max-width:320px){
-    .inputContainer{
-        max-width: 100%;
-        width: 100%;
-    }
-
+    width: 100%;
   }
-  
-  @media (min-width:321px) and (max-width:430px) {
-    
-  }
+}
+
+@media (min-width: 321px) and (max-width: 430px) {
+}

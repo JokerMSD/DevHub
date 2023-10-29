@@ -1,75 +1,73 @@
 @import "../../../styles/index.scss";
 
 .registerFormContainer {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 .registerBtn {
-    @extend .button;
-    @extend .paragraph;
-    background-color: var(--brand-1-negative);
-    border-color: var(--brand-1-negative);
-    margin-top: 1.4rem;
-    margin-bottom: 1.4rem;
+  @extend .button;
+  @extend .paragraph;
+  background-color: var(--brand-1-negative);
+  border-color: var(--brand-1-negative);
+  margin-top: 1.4rem;
+  margin-bottom: 1.4rem;
 }
 .inputRegister {
-    @extend .input;
-    @extend .paragraph;
-    width: 90%
+  @extend .input;
+  @extend .paragraph;
+  width: 90%;
 }
 .selectRegister {
-    @extend .input;
-    width: 100%;
+  @extend .input;
+  width: 100%;
 }
 .label {
-    @extend .headline;
-    display: flex;
+  @extend .headline;
+  display: flex;
+  width: 100%;
+  color: var(--grey-0);
+  margin: 1.4rem;
+  margin-left: 0;
+  margin-right: 0;
+}
+.error {
+  @extend .headline;
+  color: var(--wrong-cred);
+  margin-top: 0.5rem;
+  margin-left: 0.2rem;
+}
+
+@media (min-width: 2540px) {
+  .inputRegister {
+    width: 94%;
+  }
+  .registerFormContainer {
+    max-width: 100vw;
     width: 100%;
-    color: var(--grey-0);
-    margin: 1.4rem;
-    margin-left: 0;
-    margin-right: 0;
-}
-.error{
-    @extend .headline;
-    color: var(--wrong-cred);
-    margin-top: 0.5rem;
-    margin-left: 0.2rem;
+  }
 }
 
-
-
-@media (min-width:2540px) {
-    .inputRegister{
-        width: 94%;
-    }
-    .registerFormContainer{
-        max-width: 100vw;
-        width: 100%;
-    } 
-}
-
-@media (min-width:1920px) {
-    .inputRegister{
-        width: 92%;
-    }
-    .registerFormContainer{
-        max-width: 100vw;
-        width: 100%;
-    } 
+@media (min-width: 1920px) {
+  .inputRegister {
+    width: 90.5%;
+  }
+  .registerFormContainer {
+    max-width: 100vw;
+    width: 100%;
+  }
 }
 
 @media (max-width: 320px) {
-    .registerFormContainer{
-        max-width: 100vw;
-        width: 100%;
-    }
+  .registerFormContainer {
+    max-width: 100vw;
+    width: 100%;
+  }
 }
 
-@media (min-width: 321px) and (max-width: 430px){
-    .registerFormContainer{
-        max-width: 100vw;
-        width: 100%;
-    }
+@media (min-width: 321px) and (max-width: 430px) {
+  .registerFormContainer {
+    max-width: 100vw;
+    width: 100%;
+  }
 }
